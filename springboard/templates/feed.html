@@ -1,0 +1,17 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="col-xs-12">
+      <div id="react-mount-point">
+        Loading..
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" charset="utf-8">
+    var FeedView = React.createFactory(components.FeedView);
+    var mountPoint = document.getElementById('react-mount-point');
+    ReactDOM.render(FeedView(), mountPoint);
+  </script>
+{% endblock %}

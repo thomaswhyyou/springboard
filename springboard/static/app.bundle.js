@@ -50,23 +50,24 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Greeting = _react2.default.createClass({
-	  displayName: "Greeting",
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "greeting" },
-	      "Hello, ",
-	      this.props.name,
-	      "!"
-	    );
-	  }
-	}); /*eslint indent: [2, 2]*/
-
-	_react2.default.render(_react2.default.createElement(Greeting, { name: "World" }), document.getElementById("react-mount-point"));
+	// Expose React and app root components at global window level.
+	// Not sure whether there's a more elegant way to do this. :|
+	/*
+	 * Entry point for webpack to build js bundle.
+	 */
+	if (window) {
+	    window.React = _react2.default;
+	    window.ReactDOM = _reactDom2.default;
+	    window.components = {
+	        FeedView: __webpack_require__(162)
+	    };
+	}
 
 /***/ },
 /* 1 */
@@ -19645,6 +19646,110 @@
 
 	module.exports = deprecated;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(3);
+
+
+/***/ },
+/* 159 */,
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: "exports",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "nav",
+	      { className: "navbar navbar-default navbar-fixed-top" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "container" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "navbar-header" },
+	          _react2.default.createElement(
+	            "a",
+	            { className: "navbar-brand", href: "#" },
+	            "SPRINGBOARD"
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { id: "navbar", className: "navbar-collapse collapse" },
+	          _react2.default.createElement(
+	            "ul",
+	            { className: "nav navbar-nav navbar-right" },
+	            _react2.default.createElement(
+	              "li",
+	              null,
+	              _react2.default.createElement(
+	                "a",
+	                { href: "../navbar/" },
+	                "Filters +"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "li",
+	              null,
+	              _react2.default.createElement(
+	                "a",
+	                { href: "../navbar/" },
+	                "Fav +"
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	}); /*eslint indent: [2, 2]*/
+
+/***/ },
+/* 161 */,
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Navbar = __webpack_require__(160);
+
+	var _Navbar2 = _interopRequireDefault(_Navbar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*eslint indent: [2, 2]*/
+
+	module.exports = _react2.default.createClass({
+	  displayName: "exports",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(_Navbar2.default, null),
+	      "Test"
+	    );
+	  }
+	});
 
 /***/ }
 /******/ ]);

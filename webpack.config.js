@@ -1,9 +1,9 @@
 module.exports = {
-    entry: "./springboard/static/js/index.js",
+    entry: "./springboard/static/js/app.js",
 
     output: {
         path: "./springboard/static/",
-        filename: "bundle.js"
+        filename: "app.bundle.js"
     },
 
     module: {
