@@ -1,9 +1,9 @@
 from pyramid.config import Configurator
 from pyramid.view import view_config
 
-@view_config(route_name="index", renderer="_layout.html")
-def hello_world(request):
-    return {"foo": "bar"}
+@view_config(route_name="index", renderer="index.html")
+def index(request):
+    return {"foo": "barx"}
 
 
 def main(global_config, **settings):
