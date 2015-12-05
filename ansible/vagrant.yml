@@ -1,0 +1,16 @@
+---
+- hosts: "{{ vagrant_hostname_main }}"
+  sudo: yes
+
+  # Set up dev environment using Ansible roles I already have set up before.
+  # These refer to: github.com/thomaswhyyou/dotfiles/tree/master/ansible/roles
+  roles:
+    - setup_ubuntu_essentials
+    - setup_ubuntu_python_basics
+    - setup_ubuntu_python_devenv
+    - setup_ubuntu_swapfile
+    - setup_ubuntu_postgresql
+
+  # Install nodejs/npm manually once logged in as vagrant w/ this sh script.
+  # Reference: github.com/mklement0/n-install
+  # curl -L http://git.io/n-install | bash -s -- -y
