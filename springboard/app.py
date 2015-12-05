@@ -17,4 +17,7 @@ def main(global_config, **settings):
     config.add_route("index", "/")
     config.scan()
 
+    # Static files config
+    config.add_static_view("static", "springboard:static/")
+
     return config.make_wsgi_app()
