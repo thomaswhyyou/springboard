@@ -1,23 +1,18 @@
 from pyramid.config import Configurator
-from pyramid.view import view_config
-
-@view_config(route_name="feed", renderer="feed.html")
-def index(request):
-    return {"foo": "barx"}
 
 
 def main(global_config, **settings):
     config = Configurator(settings=settings)
 
-    # Templating config
+    # Configure templating
     config.include("pyramid_jinja2")
     config.add_jinja2_renderer('.html')
 
-    # Routing config
+    # Configure routing & wire up views
     config.add_route("feed", "/")
-    config.scan()
+    config.scan(".views")
 
-    # Static files config
+    # Manage static files
     config.add_static_view("static", "springboard:static/")
 
     return config.make_wsgi_app()
