@@ -1,6 +1,7 @@
 # Personalized to my setup.
 .vagrant/
 .env
+node_modules/
 
 
 # Source: github.com/github/gitignore/blob/master/Python.gitignore
