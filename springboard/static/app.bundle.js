@@ -19734,9 +19734,11 @@
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _Board = __webpack_require__(163);
 
-	/*eslint indent: [2, 2]*/
+	var _Board2 = _interopRequireDefault(_Board);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = _react2.default.createClass({
 	  displayName: "exports",
@@ -19746,10 +19748,38 @@
 	      "div",
 	      null,
 	      _react2.default.createElement(_Navbar2.default, null),
-	      "Test"
+	      _react2.default.createElement(_Board2.default, null)
 	    );
 	  }
-	});
+	}); /*eslint indent: [2, 2]*/
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: "exports",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement("br", null),
+	      _react2.default.createElement("br", null),
+	      _react2.default.createElement("br", null),
+	      _react2.default.createElement("br", null),
+	      "This is FeedViewx"
+	    );
+	  }
+	}); /*eslint indent: [2, 2]*/
 
 /***/ }
 /******/ ]);
