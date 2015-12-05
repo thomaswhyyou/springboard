@@ -1,13 +1,20 @@
 from pyramid.config import Configurator
-from pyramid.response import Response
+from pyramid.view import view_config
 
-
+@view_config(route_name="index", renderer="_layout.html")
 def hello_world(request):
-    return Response('<body><h1>Hello Test</h1></body>')
+    return {"foo": "bar"}
 
 
 def main(global_config, **settings):
     config = Configurator(settings=settings)
-    config.add_route('hello', '/')
-    config.add_view(hello_world, route_name='hello')
+
+    # Templating config
+    config.include("pyramid_jinja2")
+    config.add_jinja2_renderer('.html')
+
+    # Routing config
+    config.add_route("index", "/")
+    config.scan()
+
     return config.make_wsgi_app()
