@@ -10,6 +10,8 @@ def main(global_config, **settings):
 
     # Configure routing & wire up views
     config.add_route("feed", "/")
+
+    config.add_route("products", "/api/products")
     config.scan(".views")
 
     # Manage static files
