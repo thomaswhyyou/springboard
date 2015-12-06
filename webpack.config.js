@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./springboard/static/js/app.js",
+    entry: "./springboard/static/entry.js",
 
     output: {
         path: "./springboard/static/",
@@ -14,6 +14,9 @@ module.exports = {
             query: {
                 presets: ['react', 'es2015']
             }
+        }, {
+            test: /\.scss$/,
+            loaders: ["style", "css", "sass"]
         }]
     },
 
