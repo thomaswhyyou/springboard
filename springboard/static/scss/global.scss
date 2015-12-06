@@ -1,0 +1,22 @@
+.container-fluid {
+    max-width: 1500px;
+}
+
+
+
+#spr-board {
+    margin-top: 70px;
+    background: grey;
+}
+
+.spr-tile-sizer {
+    width: 20%;
+}
+
+.spr-tile {
+    width: calc(100% / 6 - 10px);
+    min-width: 150px;
+    background: lightgreen;
+    border: 2px solid hsla(0, 0%, 0%, 0.5);
+    margin-bottom: 16px;
+}
