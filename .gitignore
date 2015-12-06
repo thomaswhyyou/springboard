@@ -2,6 +2,8 @@
 .vagrant/
 .env
 node_modules/
+# Don't expose seed data.
+products.csv
 
 
 # Source: github.com/github/gitignore/blob/master/Python.gitignore
