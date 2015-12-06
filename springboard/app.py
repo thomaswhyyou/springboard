@@ -1,8 +1,16 @@
 from pyramid.config import Configurator
+from sqlalchemy import engine_from_config
+
+from springboard.models import sess, Base
 
 
 def main(global_config, **settings):
     config = Configurator(settings=settings)
+
+    # Configure database connection
+    engine = engine_from_config(settings, 'sqlalchemy.')
+    sess.configure(bind=engine)
+    Base.metadata.bind = engine
 
     # Configure templating
     config.include("pyramid_jinja2")
@@ -10,7 +18,6 @@ def main(global_config, **settings):
 
     # Configure routing & wire up views
     config.add_route("feed", "/")
-
     config.add_route("products", "/api/products")
     config.scan(".views")
 
