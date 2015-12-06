@@ -16,7 +16,12 @@ module.exports = {
             }
         }, {
             test: /\.scss$/,
+            exclude: /node_modules/,
             loaders: ["style", "css", "sass"]
+        }, {
+            // https://github.com/metafizzy/isotope/issues/979
+            test: /isotope\-|fizzy\-ui\-utils|desandro\-|masonry|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+            loader: "imports?define=>false&this=>window"
         }]
     },
 
