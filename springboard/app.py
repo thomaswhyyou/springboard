@@ -12,7 +12,7 @@ def main(global_config, **settings):
     sess.configure(bind=engine)
     Base.metadata.bind = engine
 
-    # Configure templating
+    # Configure renderer
     config.include("pyramid_jinja2")
     config.add_jinja2_renderer('.html')
 

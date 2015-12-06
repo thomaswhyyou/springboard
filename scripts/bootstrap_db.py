@@ -85,9 +85,9 @@ def main(argv=sys.argv):
                                       name=row["product_name"],
                                       description=row["product_desc"],
                                       original_price=row["original_price"],
-                                      latest_price=row["price"],
+                                      price=row["price"],
                                       is_on_sale=row["is_on_sale"],
-                                      targeted_gender=row["gender"].strip().lower(),
+                                      target_gender=row["gender"].strip().lower(),
                                       category=category,
                                       photo_url=row["photo_url"],
                                       created_at=row["created_at"])
@@ -97,7 +97,7 @@ def main(argv=sys.argv):
 
         # Create dummy user and board.
         # XXX: Limit the prototype app to one user, and only one board per user.
-        user = User(name="Chaz")
+        user = User(username="chaz")
         sess.add(user)
         sess.flush()
 
