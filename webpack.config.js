@@ -22,6 +22,10 @@ module.exports = {
             // https://github.com/metafizzy/isotope/issues/979
             test: /isotope\-|fizzy\-ui\-utils|desandro\-|masonry|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
             loader: "imports?define=>false&this=>window"
+        }, {
+            // http://imagesloaded.desandro.com/#webpack
+            test: /imagesloaded/,
+            loader: 'imports?define=>false&this=>window'
         }]
     },
 

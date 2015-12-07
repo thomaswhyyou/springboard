@@ -3,6 +3,9 @@ from pyramid.view import view_config, view_defaults
 from springboard.models import sess, Product, Vendor
 
 
+DEFAULT_BATCH_AMOUNT = 35;
+
+
 @view_defaults(renderer="json")
 class APIViews:
     def __init__(self, request):
@@ -11,17 +14,21 @@ class APIViews:
     # api/products
     @view_config(route_name="products")
     def products_list(self):
+        # XXX: Better to use form schema to validate params, but for simplicity
+        # just do it manually.
+        offset = int(self.request.params.get("offset", 0))
+
         products = (
             sess.query(Product)
                 .join(Vendor, Product.vendor_id == Vendor.id)
                 .order_by(Product.created_at.desc())
-                .limit(50)
-                .offset(0)
+                .offset(offset * DEFAULT_BATCH_AMOUNT)
+                .limit(DEFAULT_BATCH_AMOUNT)
         ).all()
 
         resp = {
-            "offeset": 0,
-            "filters": {},
+            "offset": offset,
+            "filtered": {},
             "data": [],
         }
         for product in products:

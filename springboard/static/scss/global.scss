@@ -1,22 +1,160 @@
+$spr-color-text-darkgrey: #777;
+$spr-color-border-grey: #e0e0e0;
+$spr-color-accent-blue: #3C6FED;
+
+/*
+ * Override bootstrap because, reasons.
+ */
 .container-fluid {
     max-width: 1500px;
 }
 
+a {
+    transition: all 0.2s ease-in-out;
 
-
-#spr-board {
-    margin-top: 70px;
-    background: grey;
+    &:hover {
+        color: $spr-color-accent-blue !important;
+    }
 }
 
-.spr-tile-sizer {
-    width: 20%;
+.navbar-brand {
+    font-weight: 500;
+    color: #333 !important;
+}
+
+
+/*
+ * Springboard global styles
+ */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: calc(100% +  6px);
+    background: #e9e9e9;
+    border-bottom: 6px solid $spr-color-accent-blue;
+}
+
+
+#spr-navbar {
+    background-color: #ffffff;
+    opacity: 0.85;
+    border-color: #e7e7e7;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    padding-right: 25px;
+
+    #spr-filter-section {
+        height: 0;
+    }
+}
+
+#spr-board {
+    margin-top: 85px;
+    margin-bottom: 150px;
 }
 
 .spr-tile {
+    display: inline-block;
     width: calc(100% / 6 - 10px);
-    min-width: 150px;
-    background: lightgreen;
-    border: 2px solid hsla(0, 0%, 0%, 0.5);
+    min-width: 200px;
     margin-bottom: 16px;
+
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    background: #ffffff;
+    color: $spr-color-text-darkgrey;
+    font-size: 12px;
+
+    .spr-tile-image {
+        border-bottom: 1px solid $spr-color-border-grey;
+        max-width: 100%;
+    }
+
+    .spr-gender-taxonomy {
+        z-index: -1;
+        color: #fff;
+        padding: 0 15px 5px;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .spr-heartit-btn {
+        z-index: -1;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        padding: 2px 5px;
+        border-radius: 4px;
+        border: 1px solid #ac2925;
+        background: #c9302c;
+
+        &:hover {
+            border: 1px solid #d43f3a;
+            background: #d9534f;
+            cursor: pointer;
+        }
+    }
+
+    .spr-tile-metabox {
+        > div {
+            padding: 5px 15px;
+        }
+        > div:not(:first-child) {
+            border-top: 1px solid $spr-color-border-grey;
+        }
+    }
+}
+
+.spr-board-end {
+    width: 100%;
+    margin-top: 40px;
+    background: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.spr-onhover-dim {
+    position: relative;
+
+    // For IE 10+ only.
+    // https://philipnewcomer.net/2014/04/target-internet-explorer-10-11-css/
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        height: 100%;
+    }
+
+    // Set up a pseudo element to be an acting agent for the dimmer effect
+    // when triggered. Normally should not be visible with opacity at 0.
+    &:before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background: #000000;
+        opacity: 0;
+        border-radius: 6px 6px 0 0;
+        z-index: 1;
+    }
+
+    // Trigger dimmer effect to be visible on hover by bringing opacity
+    // to be higher than 0.
+    &:hover:before {
+        opacity: 0.25;
+        transition: all 0.2s;
+    }
+
+    // If given to child elements, bump its z-index higher than the dimmer
+    // effect so not to be affected by it.
+    .spr-exempt-dim {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:hover {
+        .spr-show-at-dim {
+            z-index: 2;
+        }
+    }
 }

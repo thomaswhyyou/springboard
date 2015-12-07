@@ -19692,7 +19692,7 @@
 
 
 	// module
-	exports.push([module.id, ".container-fluid {\n  max-width: 1500px; }\n\n#spr-board {\n  margin-top: 70px;\n  background: grey; }\n\n.spr-tile-sizer {\n  width: 20%; }\n\n.spr-tile {\n  width: calc(100% / 6 - 10px);\n  min-width: 150px;\n  background: lightgreen;\n  border: 2px solid rgba(0, 0, 0, 0.5);\n  margin-bottom: 16px; }\n", ""]);
+	exports.push([module.id, "/*\n * Override bootstrap because, reasons.\n */\n.container-fluid {\n  max-width: 1500px; }\n\na {\n  transition: all 0.2s ease-in-out; }\n  a:hover {\n    color: #3C6FED !important; }\n\n.navbar-brand {\n  font-weight: 500;\n  color: #333 !important; }\n\n/*\n * Springboard global styles\n */\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: calc(100% +  6px);\n  background: #e9e9e9;\n  border-bottom: 6px solid #3C6FED; }\n\n#spr-navbar {\n  background-color: #ffffff;\n  opacity: 0.85;\n  border-color: #e7e7e7;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);\n  padding-right: 25px; }\n  #spr-navbar #spr-filter-section {\n    height: 0; }\n\n#spr-board {\n  margin-top: 85px;\n  margin-bottom: 150px; }\n\n.spr-tile {\n  display: inline-block;\n  width: calc(100% / 6 - 10px);\n  min-width: 200px;\n  margin-bottom: 16px;\n  border-radius: 6px;\n  overflow: hidden;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);\n  background: #ffffff;\n  color: #777;\n  font-size: 12px; }\n  .spr-tile .spr-tile-image {\n    border-bottom: 1px solid #e0e0e0;\n    max-width: 100%; }\n  .spr-tile .spr-gender-taxonomy {\n    z-index: -1;\n    color: #fff;\n    padding: 0 15px 5px;\n    position: absolute;\n    bottom: 0; }\n  .spr-tile .spr-heartit-btn {\n    z-index: -1;\n    position: absolute;\n    top: 10px;\n    left: 10px;\n    color: #fff;\n    padding: 2px 5px;\n    border-radius: 4px;\n    border: 1px solid #ac2925;\n    background: #c9302c; }\n    .spr-tile .spr-heartit-btn:hover {\n      border: 1px solid #d43f3a;\n      background: #d9534f;\n      cursor: pointer; }\n  .spr-tile .spr-tile-metabox > div {\n    padding: 5px 15px; }\n  .spr-tile .spr-tile-metabox > div:not(:first-child) {\n    border-top: 1px solid #e0e0e0; }\n\n.spr-board-end {\n  width: 100%;\n  margin-top: 40px;\n  background: none;\n  box-shadow: none;\n  text-align: center; }\n\n.spr-onhover-dim {\n  position: relative; }\n  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n    .spr-onhover-dim {\n      height: 100%; } }\n  .spr-onhover-dim:before {\n    position: absolute;\n    content: '';\n    height: 100%;\n    width: 100%;\n    background: #000000;\n    opacity: 0;\n    border-radius: 6px 6px 0 0;\n    z-index: 1; }\n  .spr-onhover-dim:hover:before {\n    opacity: 0.25;\n    transition: all 0.2s; }\n  .spr-onhover-dim .spr-exempt-dim {\n    position: relative;\n    z-index: 2; }\n  .spr-onhover-dim:hover .spr-show-at-dim {\n    z-index: 2; }\n", ""]);
 
 	// exports
 
@@ -20058,7 +20058,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "nav",
-	      { className: "navbar navbar-default navbar-fixed-top" },
+	      { id: "spr-navbar", className: "navbar navbar-default navbar-fixed-top" },
 	      _react2.default.createElement(
 	        "div",
 	        { className: "container-fluid" },
@@ -20073,7 +20073,7 @@
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { id: "navbar", className: "navbar-collapse collapse" },
+	          null,
 	          _react2.default.createElement(
 	            "ul",
 	            { className: "nav navbar-nav navbar-right" },
@@ -20082,8 +20082,8 @@
 	              null,
 	              _react2.default.createElement(
 	                "a",
-	                { href: "../navbar/" },
-	                "Filters +"
+	                { href: "" },
+	                "+ Filters"
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -20092,10 +20092,19 @@
 	              _react2.default.createElement(
 	                "a",
 	                { href: "../navbar/" },
-	                "Fav +"
+	                "My Board"
 	              )
 	            )
 	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { id: "spr-filter-section", className: "container-fluid" },
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          "asdf"
 	        )
 	      )
 	    );
@@ -20112,10 +20121,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(158);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	var _Tile = __webpack_require__(166);
 
 	var _Tile2 = _interopRequireDefault(_Tile);
@@ -20128,31 +20133,100 @@
 
 	var _masonryLayout2 = _interopRequireDefault(_masonryLayout);
 
+	var _reqwest = __webpack_require__(179);
+
+	var _reqwest2 = _interopRequireDefault(_reqwest);
+
+	var _imagesloaded = __webpack_require__(181);
+
+	var _imagesloaded2 = _interopRequireDefault(_imagesloaded);
+
+	var _reactWaypoint = __webpack_require__(182);
+
+	var _reactWaypoint2 = _interopRequireDefault(_reactWaypoint);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import ReactDOM from "react-dom";
 
 	module.exports = _react2.default.createClass({
 	  displayName: "exports",
 
-	  componentDidMount: function componentDidMount() {
-	    // var container = document.querySelector("#spr-board");
-	    var masonry = new _masonryLayout2.default("#spr-board", {
-	      columnWidth: '.spr-tile',
-	      gutter: 10,
-	      transitionDuration: "0.1s",
-	      itemSelector: ".spr-tile"
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      urlForProducts: "/api/products"
+	    };
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      products: [],
+	      nextOffset: 0,
+	      isLoading: true
+	    };
+	  },
+
+	  _fetchProductData: function _fetchProductData() {
+	    this.setState({ isLoading: true });
+
+	    var self = this;
+	    (0, _reqwest2.default)({
+	      url: self.props.urlForProducts,
+	      method: "GET",
+	      data: {
+	        offset: self.state.nextOffset
+	      },
+	      success: function success(resp) {
+	        self.setState({
+	          products: self.state.products.concat(resp.data),
+	          nextOffset: parseInt(resp.offset) + 1
+	        });
+
+	        var board = document.querySelector("#spr-board");
+	        (0, _imagesloaded2.default)(board, function () {
+	          new _masonryLayout2.default(board, {
+	            columnWidth: '.spr-tile',
+	            gutter: 10,
+	            transitionDuration: "0.2s",
+	            itemSelector: ".spr-tile"
+	          });
+
+	          self.setState({ isLoading: false });
+	        });
+	      }
 	    });
 	  },
 
-	  render: function render() {
-	    var tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+	  _handleWaypointEnter: function _handleWaypointEnter() {
+	    this._fetchProductData();
+	  },
 
+	  componentDidMount: function componentDidMount() {
+	    this._fetchProductData();
+	  },
+
+	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
 	      { id: "spr-board" },
-	      "This is FeedViewx",
-	      _lodash2.default.map(tiles, function () {
-	        return _react2.default.createElement(_Tile2.default, null);
-	      }, this)
+	      _lodash2.default.map(this.state.products, function (product) {
+	        return _react2.default.createElement(_Tile2.default, { key: product.id,
+	          photoUrl: product.photo_url,
+	          productName: product.name,
+	          vendorName: product.vendor_name,
+	          description: product.description,
+	          category: product.category,
+	          targetGender: product.target_gender,
+	          price: product.price,
+	          isOnSale: product.is_on_sale
+	        });
+	      }, this),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "spr-tile spr-board-end" },
+	        !this.state.isLoading && _react2.default.createElement(_reactWaypoint2.default, { onEnter: this._handleWaypointEnter, threshold: 0.1 }),
+	        this.state.isLoading && _react2.default.createElement("i", { className: "fa fa-spinner fa-2x fa-spin" })
+	      )
 	    );
 	  }
 	}); /*eslint indent: [2, 2]*/
@@ -20167,30 +20241,120 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _lodash = __webpack_require__(167);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*eslint indent: [2, 2]*/
 
 	module.exports = _react2.default.createClass({
 	  displayName: "exports",
 
-	  // getDefaultProps: function() {
-	  //   return {
-	  //     imgsrc:
-	  //   }
-	  // },
+	  _handleClickOnHeartButton: function _handleClickOnHeartButton() {
+	    alert("Sorry, not implemented yet. SOON :|");
+	  },
 
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "spr-tile" },
-	      _react2.default.createElement("img", { src: "https://s3.amazonaws.com/crawler-cache.jellolabs.com/5QoVQceuih4zlBtD/photo.jpg", height: "100", width: "100" }),
 	      _react2.default.createElement(
 	        "div",
-	        { style: { background: "lightblue" } },
-	        "item description"
+	        { className: "spr-onhover-dim" },
+	        _react2.default.createElement("img", { className: "spr-tile-image",
+	          src: this.props.photoUrl
+	        }),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "spr-gender-taxonomy spr-show-at-dim" },
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            _react2.default.createElement(
+	              "b",
+	              null,
+	              "FOR"
+	            ),
+	            " "
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            this.props.targetGender
+	          ),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            _react2.default.createElement(
+	              "b",
+	              null,
+	              "CATEGORY"
+	            ),
+	            " "
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            this.props.category
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "spr-heartit-btn spr-show-at-dim",
+	            onClick: this._handleClickOnHeartButton },
+	          _react2.default.createElement("i", { className: "fa fa-heart" })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "spr-tile-metabox" },
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            this.props.productName
+	          ),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(
+	            "span",
+	            { style: { color: "#DADADA", fontStyle: "italic" } },
+	            "by "
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            this.props.vendorName
+	          )
+	        ),
+	        !_lodash2.default.isEmpty(this.props.description) && _react2.default.createElement(
+	          "div",
+	          null,
+	          this.props.description
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            "$",
+	            this.props.price
+	          ),
+	          this.props.isOnSale === true && _react2.default.createElement(
+	            "span",
+	            { style: { color: "#FF0000", fontWeight: "600", float: "right" } },
+	            "SALE"
+	          )
+	        )
 	      )
 	    );
 	  }
-	}); /*eslint indent: [2, 2]*/
+	});
 
 /***/ },
 /* 167 */
@@ -35698,6 +35862,1249 @@
 	}));
 
 	}.call(window));
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  * Reqwest! A general purpose XHR connection manager
+	  * license MIT (c) Dustin Diaz 2015
+	  * https://github.com/ded/reqwest
+	  */
+
+	!function (name, context, definition) {
+	  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+	  else if (true) !(__WEBPACK_AMD_DEFINE_FACTORY__ = (definition), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+	  else context[name] = definition()
+	}('reqwest', this, function () {
+
+	  var context = this
+
+	  if ('window' in context) {
+	    var doc = document
+	      , byTag = 'getElementsByTagName'
+	      , head = doc[byTag]('head')[0]
+	  } else {
+	    var XHR2
+	    try {
+	      XHR2 = __webpack_require__(180)
+	    } catch (ex) {
+	      throw new Error('Peer dependency `xhr2` required! Please npm install xhr2')
+	    }
+	  }
+
+
+	  var httpsRe = /^http/
+	    , protocolRe = /(^\w+):\/\//
+	    , twoHundo = /^(20\d|1223)$/ //http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+	    , readyState = 'readyState'
+	    , contentType = 'Content-Type'
+	    , requestedWith = 'X-Requested-With'
+	    , uniqid = 0
+	    , callbackPrefix = 'reqwest_' + (+new Date())
+	    , lastValue // data stored by the most recent JSONP callback
+	    , xmlHttpRequest = 'XMLHttpRequest'
+	    , xDomainRequest = 'XDomainRequest'
+	    , noop = function () {}
+
+	    , isArray = typeof Array.isArray == 'function'
+	        ? Array.isArray
+	        : function (a) {
+	            return a instanceof Array
+	          }
+
+	    , defaultHeaders = {
+	          'contentType': 'application/x-www-form-urlencoded'
+	        , 'requestedWith': xmlHttpRequest
+	        , 'accept': {
+	              '*':  'text/javascript, text/html, application/xml, text/xml, */*'
+	            , 'xml':  'application/xml, text/xml'
+	            , 'html': 'text/html'
+	            , 'text': 'text/plain'
+	            , 'json': 'application/json, text/javascript'
+	            , 'js':   'application/javascript, text/javascript'
+	          }
+	      }
+
+	    , xhr = function(o) {
+	        // is it x-domain
+	        if (o['crossOrigin'] === true) {
+	          var xhr = context[xmlHttpRequest] ? new XMLHttpRequest() : null
+	          if (xhr && 'withCredentials' in xhr) {
+	            return xhr
+	          } else if (context[xDomainRequest]) {
+	            return new XDomainRequest()
+	          } else {
+	            throw new Error('Browser does not support cross-origin requests')
+	          }
+	        } else if (context[xmlHttpRequest]) {
+	          return new XMLHttpRequest()
+	        } else if (XHR2) {
+	          return new XHR2()
+	        } else {
+	          return new ActiveXObject('Microsoft.XMLHTTP')
+	        }
+	      }
+	    , globalSetupOptions = {
+	        dataFilter: function (data) {
+	          return data
+	        }
+	      }
+
+	  function succeed(r) {
+	    var protocol = protocolRe.exec(r.url)
+	    protocol = (protocol && protocol[1]) || context.location.protocol
+	    return httpsRe.test(protocol) ? twoHundo.test(r.request.status) : !!r.request.response
+	  }
+
+	  function handleReadyState(r, success, error) {
+	    return function () {
+	      // use _aborted to mitigate against IE err c00c023f
+	      // (can't read props on aborted request objects)
+	      if (r._aborted) return error(r.request)
+	      if (r._timedOut) return error(r.request, 'Request is aborted: timeout')
+	      if (r.request && r.request[readyState] == 4) {
+	        r.request.onreadystatechange = noop
+	        if (succeed(r)) success(r.request)
+	        else
+	          error(r.request)
+	      }
+	    }
+	  }
+
+	  function setHeaders(http, o) {
+	    var headers = o['headers'] || {}
+	      , h
+
+	    headers['Accept'] = headers['Accept']
+	      || defaultHeaders['accept'][o['type']]
+	      || defaultHeaders['accept']['*']
+
+	    var isAFormData = typeof FormData !== 'undefined' && (o['data'] instanceof FormData);
+	    // breaks cross-origin requests with legacy browsers
+	    if (!o['crossOrigin'] && !headers[requestedWith]) headers[requestedWith] = defaultHeaders['requestedWith']
+	    if (!headers[contentType] && !isAFormData) headers[contentType] = o['contentType'] || defaultHeaders['contentType']
+	    for (h in headers)
+	      headers.hasOwnProperty(h) && 'setRequestHeader' in http && http.setRequestHeader(h, headers[h])
+	  }
+
+	  function setCredentials(http, o) {
+	    if (typeof o['withCredentials'] !== 'undefined' && typeof http.withCredentials !== 'undefined') {
+	      http.withCredentials = !!o['withCredentials']
+	    }
+	  }
+
+	  function generalCallback(data) {
+	    lastValue = data
+	  }
+
+	  function urlappend (url, s) {
+	    return url + (/\?/.test(url) ? '&' : '?') + s
+	  }
+
+	  function handleJsonp(o, fn, err, url) {
+	    var reqId = uniqid++
+	      , cbkey = o['jsonpCallback'] || 'callback' // the 'callback' key
+	      , cbval = o['jsonpCallbackName'] || reqwest.getcallbackPrefix(reqId)
+	      , cbreg = new RegExp('((^|\\?|&)' + cbkey + ')=([^&]+)')
+	      , match = url.match(cbreg)
+	      , script = doc.createElement('script')
+	      , loaded = 0
+	      , isIE10 = navigator.userAgent.indexOf('MSIE 10.0') !== -1
+
+	    if (match) {
+	      if (match[3] === '?') {
+	        url = url.replace(cbreg, '$1=' + cbval) // wildcard callback func name
+	      } else {
+	        cbval = match[3] // provided callback func name
+	      }
+	    } else {
+	      url = urlappend(url, cbkey + '=' + cbval) // no callback details, add 'em
+	    }
+
+	    context[cbval] = generalCallback
+
+	    script.type = 'text/javascript'
+	    script.src = url
+	    script.async = true
+	    if (typeof script.onreadystatechange !== 'undefined' && !isIE10) {
+	      // need this for IE due to out-of-order onreadystatechange(), binding script
+	      // execution to an event listener gives us control over when the script
+	      // is executed. See http://jaubourg.net/2010/07/loading-script-as-onclick-handler-of.html
+	      script.htmlFor = script.id = '_reqwest_' + reqId
+	    }
+
+	    script.onload = script.onreadystatechange = function () {
+	      if ((script[readyState] && script[readyState] !== 'complete' && script[readyState] !== 'loaded') || loaded) {
+	        return false
+	      }
+	      script.onload = script.onreadystatechange = null
+	      script.onclick && script.onclick()
+	      // Call the user callback with the last value stored and clean up values and scripts.
+	      fn(lastValue)
+	      lastValue = undefined
+	      head.removeChild(script)
+	      loaded = 1
+	    }
+
+	    // Add the script to the DOM head
+	    head.appendChild(script)
+
+	    // Enable JSONP timeout
+	    return {
+	      abort: function () {
+	        script.onload = script.onreadystatechange = null
+	        err({}, 'Request is aborted: timeout', {})
+	        lastValue = undefined
+	        head.removeChild(script)
+	        loaded = 1
+	      }
+	    }
+	  }
+
+	  function getRequest(fn, err) {
+	    var o = this.o
+	      , method = (o['method'] || 'GET').toUpperCase()
+	      , url = typeof o === 'string' ? o : o['url']
+	      // convert non-string objects to query-string form unless o['processData'] is false
+	      , data = (o['processData'] !== false && o['data'] && typeof o['data'] !== 'string')
+	        ? reqwest.toQueryString(o['data'])
+	        : (o['data'] || null)
+	      , http
+	      , sendWait = false
+
+	    // if we're working on a GET request and we have data then we should append
+	    // query string to end of URL and not post data
+	    if ((o['type'] == 'jsonp' || method == 'GET') && data) {
+	      url = urlappend(url, data)
+	      data = null
+	    }
+
+	    if (o['type'] == 'jsonp') return handleJsonp(o, fn, err, url)
+
+	    // get the xhr from the factory if passed
+	    // if the factory returns null, fall-back to ours
+	    http = (o.xhr && o.xhr(o)) || xhr(o)
+
+	    http.open(method, url, o['async'] === false ? false : true)
+	    setHeaders(http, o)
+	    setCredentials(http, o)
+	    if (context[xDomainRequest] && http instanceof context[xDomainRequest]) {
+	        http.onload = fn
+	        http.onerror = err
+	        // NOTE: see
+	        // http://social.msdn.microsoft.com/Forums/en-US/iewebdevelopment/thread/30ef3add-767c-4436-b8a9-f1ca19b4812e
+	        http.onprogress = function() {}
+	        sendWait = true
+	    } else {
+	      http.onreadystatechange = handleReadyState(this, fn, err)
+	    }
+	    o['before'] && o['before'](http)
+	    if (sendWait) {
+	      setTimeout(function () {
+	        http.send(data)
+	      }, 200)
+	    } else {
+	      http.send(data)
+	    }
+	    return http
+	  }
+
+	  function Reqwest(o, fn) {
+	    this.o = o
+	    this.fn = fn
+
+	    init.apply(this, arguments)
+	  }
+
+	  function setType(header) {
+	    // json, javascript, text/plain, text/html, xml
+	    if (header === null) return undefined; //In case of no content-type.
+	    if (header.match('json')) return 'json'
+	    if (header.match('javascript')) return 'js'
+	    if (header.match('text')) return 'html'
+	    if (header.match('xml')) return 'xml'
+	  }
+
+	  function init(o, fn) {
+
+	    this.url = typeof o == 'string' ? o : o['url']
+	    this.timeout = null
+
+	    // whether request has been fulfilled for purpose
+	    // of tracking the Promises
+	    this._fulfilled = false
+	    // success handlers
+	    this._successHandler = function(){}
+	    this._fulfillmentHandlers = []
+	    // error handlers
+	    this._errorHandlers = []
+	    // complete (both success and fail) handlers
+	    this._completeHandlers = []
+	    this._erred = false
+	    this._responseArgs = {}
+
+	    var self = this
+
+	    fn = fn || function () {}
+
+	    if (o['timeout']) {
+	      this.timeout = setTimeout(function () {
+	        timedOut()
+	      }, o['timeout'])
+	    }
+
+	    if (o['success']) {
+	      this._successHandler = function () {
+	        o['success'].apply(o, arguments)
+	      }
+	    }
+
+	    if (o['error']) {
+	      this._errorHandlers.push(function () {
+	        o['error'].apply(o, arguments)
+	      })
+	    }
+
+	    if (o['complete']) {
+	      this._completeHandlers.push(function () {
+	        o['complete'].apply(o, arguments)
+	      })
+	    }
+
+	    function complete (resp) {
+	      o['timeout'] && clearTimeout(self.timeout)
+	      self.timeout = null
+	      while (self._completeHandlers.length > 0) {
+	        self._completeHandlers.shift()(resp)
+	      }
+	    }
+
+	    function success (resp) {
+	      var type = o['type'] || resp && setType(resp.getResponseHeader('Content-Type')) // resp can be undefined in IE
+	      resp = (type !== 'jsonp') ? self.request : resp
+	      // use global data filter on response text
+	      var filteredResponse = globalSetupOptions.dataFilter(resp.responseText, type)
+	        , r = filteredResponse
+	      try {
+	        resp.responseText = r
+	      } catch (e) {
+	        // can't assign this in IE<=8, just ignore
+	      }
+	      if (r) {
+	        switch (type) {
+	        case 'json':
+	          try {
+	            resp = context.JSON ? context.JSON.parse(r) : eval('(' + r + ')')
+	          } catch (err) {
+	            return error(resp, 'Could not parse JSON in response', err)
+	          }
+	          break
+	        case 'js':
+	          resp = eval(r)
+	          break
+	        case 'html':
+	          resp = r
+	          break
+	        case 'xml':
+	          resp = resp.responseXML
+	              && resp.responseXML.parseError // IE trololo
+	              && resp.responseXML.parseError.errorCode
+	              && resp.responseXML.parseError.reason
+	            ? null
+	            : resp.responseXML
+	          break
+	        }
+	      }
+
+	      self._responseArgs.resp = resp
+	      self._fulfilled = true
+	      fn(resp)
+	      self._successHandler(resp)
+	      while (self._fulfillmentHandlers.length > 0) {
+	        resp = self._fulfillmentHandlers.shift()(resp)
+	      }
+
+	      complete(resp)
+	    }
+
+	    function timedOut() {
+	      self._timedOut = true
+	      self.request.abort()
+	    }
+
+	    function error(resp, msg, t) {
+	      resp = self.request
+	      self._responseArgs.resp = resp
+	      self._responseArgs.msg = msg
+	      self._responseArgs.t = t
+	      self._erred = true
+	      while (self._errorHandlers.length > 0) {
+	        self._errorHandlers.shift()(resp, msg, t)
+	      }
+	      complete(resp)
+	    }
+
+	    this.request = getRequest.call(this, success, error)
+	  }
+
+	  Reqwest.prototype = {
+	    abort: function () {
+	      this._aborted = true
+	      this.request.abort()
+	    }
+
+	  , retry: function () {
+	      init.call(this, this.o, this.fn)
+	    }
+
+	    /**
+	     * Small deviation from the Promises A CommonJs specification
+	     * http://wiki.commonjs.org/wiki/Promises/A
+	     */
+
+	    /**
+	     * `then` will execute upon successful requests
+	     */
+	  , then: function (success, fail) {
+	      success = success || function () {}
+	      fail = fail || function () {}
+	      if (this._fulfilled) {
+	        this._responseArgs.resp = success(this._responseArgs.resp)
+	      } else if (this._erred) {
+	        fail(this._responseArgs.resp, this._responseArgs.msg, this._responseArgs.t)
+	      } else {
+	        this._fulfillmentHandlers.push(success)
+	        this._errorHandlers.push(fail)
+	      }
+	      return this
+	    }
+
+	    /**
+	     * `always` will execute whether the request succeeds or fails
+	     */
+	  , always: function (fn) {
+	      if (this._fulfilled || this._erred) {
+	        fn(this._responseArgs.resp)
+	      } else {
+	        this._completeHandlers.push(fn)
+	      }
+	      return this
+	    }
+
+	    /**
+	     * `fail` will execute when the request fails
+	     */
+	  , fail: function (fn) {
+	      if (this._erred) {
+	        fn(this._responseArgs.resp, this._responseArgs.msg, this._responseArgs.t)
+	      } else {
+	        this._errorHandlers.push(fn)
+	      }
+	      return this
+	    }
+	  , 'catch': function (fn) {
+	      return this.fail(fn)
+	    }
+	  }
+
+	  function reqwest(o, fn) {
+	    return new Reqwest(o, fn)
+	  }
+
+	  // normalize newline variants according to spec -> CRLF
+	  function normalize(s) {
+	    return s ? s.replace(/\r?\n/g, '\r\n') : ''
+	  }
+
+	  function serial(el, cb) {
+	    var n = el.name
+	      , t = el.tagName.toLowerCase()
+	      , optCb = function (o) {
+	          // IE gives value="" even where there is no value attribute
+	          // 'specified' ref: http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-862529273
+	          if (o && !o['disabled'])
+	            cb(n, normalize(o['attributes']['value'] && o['attributes']['value']['specified'] ? o['value'] : o['text']))
+	        }
+	      , ch, ra, val, i
+
+	    // don't serialize elements that are disabled or without a name
+	    if (el.disabled || !n) return
+
+	    switch (t) {
+	    case 'input':
+	      if (!/reset|button|image|file/i.test(el.type)) {
+	        ch = /checkbox/i.test(el.type)
+	        ra = /radio/i.test(el.type)
+	        val = el.value
+	        // WebKit gives us "" instead of "on" if a checkbox has no value, so correct it here
+	        ;(!(ch || ra) || el.checked) && cb(n, normalize(ch && val === '' ? 'on' : val))
+	      }
+	      break
+	    case 'textarea':
+	      cb(n, normalize(el.value))
+	      break
+	    case 'select':
+	      if (el.type.toLowerCase() === 'select-one') {
+	        optCb(el.selectedIndex >= 0 ? el.options[el.selectedIndex] : null)
+	      } else {
+	        for (i = 0; el.length && i < el.length; i++) {
+	          el.options[i].selected && optCb(el.options[i])
+	        }
+	      }
+	      break
+	    }
+	  }
+
+	  // collect up all form elements found from the passed argument elements all
+	  // the way down to child elements; pass a '<form>' or form fields.
+	  // called with 'this'=callback to use for serial() on each element
+	  function eachFormElement() {
+	    var cb = this
+	      , e, i
+	      , serializeSubtags = function (e, tags) {
+	          var i, j, fa
+	          for (i = 0; i < tags.length; i++) {
+	            fa = e[byTag](tags[i])
+	            for (j = 0; j < fa.length; j++) serial(fa[j], cb)
+	          }
+	        }
+
+	    for (i = 0; i < arguments.length; i++) {
+	      e = arguments[i]
+	      if (/input|select|textarea/i.test(e.tagName)) serial(e, cb)
+	      serializeSubtags(e, [ 'input', 'select', 'textarea' ])
+	    }
+	  }
+
+	  // standard query string style serialization
+	  function serializeQueryString() {
+	    return reqwest.toQueryString(reqwest.serializeArray.apply(null, arguments))
+	  }
+
+	  // { 'name': 'value', ... } style serialization
+	  function serializeHash() {
+	    var hash = {}
+	    eachFormElement.apply(function (name, value) {
+	      if (name in hash) {
+	        hash[name] && !isArray(hash[name]) && (hash[name] = [hash[name]])
+	        hash[name].push(value)
+	      } else hash[name] = value
+	    }, arguments)
+	    return hash
+	  }
+
+	  // [ { name: 'name', value: 'value' }, ... ] style serialization
+	  reqwest.serializeArray = function () {
+	    var arr = []
+	    eachFormElement.apply(function (name, value) {
+	      arr.push({name: name, value: value})
+	    }, arguments)
+	    return arr
+	  }
+
+	  reqwest.serialize = function () {
+	    if (arguments.length === 0) return ''
+	    var opt, fn
+	      , args = Array.prototype.slice.call(arguments, 0)
+
+	    opt = args.pop()
+	    opt && opt.nodeType && args.push(opt) && (opt = null)
+	    opt && (opt = opt.type)
+
+	    if (opt == 'map') fn = serializeHash
+	    else if (opt == 'array') fn = reqwest.serializeArray
+	    else fn = serializeQueryString
+
+	    return fn.apply(null, args)
+	  }
+
+	  reqwest.toQueryString = function (o, trad) {
+	    var prefix, i
+	      , traditional = trad || false
+	      , s = []
+	      , enc = encodeURIComponent
+	      , add = function (key, value) {
+	          // If value is a function, invoke it and return its value
+	          value = ('function' === typeof value) ? value() : (value == null ? '' : value)
+	          s[s.length] = enc(key) + '=' + enc(value)
+	        }
+	    // If an array was passed in, assume that it is an array of form elements.
+	    if (isArray(o)) {
+	      for (i = 0; o && i < o.length; i++) add(o[i]['name'], o[i]['value'])
+	    } else {
+	      // If traditional, encode the "old" way (the way 1.3.2 or older
+	      // did it), otherwise encode params recursively.
+	      for (prefix in o) {
+	        if (o.hasOwnProperty(prefix)) buildParams(prefix, o[prefix], traditional, add)
+	      }
+	    }
+
+	    // spaces should be + according to spec
+	    return s.join('&').replace(/%20/g, '+')
+	  }
+
+	  function buildParams(prefix, obj, traditional, add) {
+	    var name, i, v
+	      , rbracket = /\[\]$/
+
+	    if (isArray(obj)) {
+	      // Serialize array item.
+	      for (i = 0; obj && i < obj.length; i++) {
+	        v = obj[i]
+	        if (traditional || rbracket.test(prefix)) {
+	          // Treat each array item as a scalar.
+	          add(prefix, v)
+	        } else {
+	          buildParams(prefix + '[' + (typeof v === 'object' ? i : '') + ']', v, traditional, add)
+	        }
+	      }
+	    } else if (obj && obj.toString() === '[object Object]') {
+	      // Serialize object item.
+	      for (name in obj) {
+	        buildParams(prefix + '[' + name + ']', obj[name], traditional, add)
+	      }
+
+	    } else {
+	      // Serialize scalar item.
+	      add(prefix, obj)
+	    }
+	  }
+
+	  reqwest.getcallbackPrefix = function () {
+	    return callbackPrefix
+	  }
+
+	  // jQuery and Zepto compatibility, differences can be remapped here so you can call
+	  // .ajax.compat(options, callback)
+	  reqwest.compat = function (o, fn) {
+	    if (o) {
+	      o['type'] && (o['method'] = o['type']) && delete o['type']
+	      o['dataType'] && (o['type'] = o['dataType'])
+	      o['jsonpCallback'] && (o['jsonpCallbackName'] = o['jsonpCallback']) && delete o['jsonpCallback']
+	      o['jsonp'] && (o['jsonpCallback'] = o['jsonp'])
+	    }
+	    return new Reqwest(o, fn)
+	  }
+
+	  reqwest.ajaxSetup = function (options) {
+	    options = options || {}
+	    for (var k in options) {
+	      globalSetupOptions[k] = options[k]
+	    }
+	  }
+
+	  return reqwest
+	});
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var define = false;
+	(function() {
+
+	/*!
+	 * imagesLoaded v3.2.0
+	 * JavaScript is all like "You images are done yet or what?"
+	 * MIT License
+	 */
+
+	( function( window, factory ) { 'use strict';
+	  // universal module definition
+
+	  /*global define: false, module: false, require: false */
+
+	  if ( typeof define == 'function' && define.amd ) {
+	    // AMD
+	    define( [
+	      'eventEmitter/EventEmitter',
+	      'eventie/eventie'
+	    ], function( EventEmitter, eventie ) {
+	      return factory( window, EventEmitter, eventie );
+	    });
+	  } else if ( typeof module == 'object' && module.exports ) {
+	    // CommonJS
+	    module.exports = factory(
+	      window,
+	      __webpack_require__(172),
+	      __webpack_require__(171)
+	    );
+	  } else {
+	    // browser global
+	    window.imagesLoaded = factory(
+	      window,
+	      window.EventEmitter,
+	      window.eventie
+	    );
+	  }
+
+	})( window,
+
+	// --------------------------  factory -------------------------- //
+
+	function factory( window, EventEmitter, eventie ) {
+
+	'use strict';
+
+	var $ = window.jQuery;
+	var console = window.console;
+
+	// -------------------------- helpers -------------------------- //
+
+	// extend objects
+	function extend( a, b ) {
+	  for ( var prop in b ) {
+	    a[ prop ] = b[ prop ];
+	  }
+	  return a;
+	}
+
+	var objToString = Object.prototype.toString;
+	function isArray( obj ) {
+	  return objToString.call( obj ) == '[object Array]';
+	}
+
+	// turn element or nodeList into an array
+	function makeArray( obj ) {
+	  var ary = [];
+	  if ( isArray( obj ) ) {
+	    // use object if already an array
+	    ary = obj;
+	  } else if ( typeof obj.length == 'number' ) {
+	    // convert nodeList to array
+	    for ( var i=0; i < obj.length; i++ ) {
+	      ary.push( obj[i] );
+	    }
+	  } else {
+	    // array of single index
+	    ary.push( obj );
+	  }
+	  return ary;
+	}
+
+	  // -------------------------- imagesLoaded -------------------------- //
+
+	  /**
+	   * @param {Array, Element, NodeList, String} elem
+	   * @param {Object or Function} options - if function, use as callback
+	   * @param {Function} onAlways - callback function
+	   */
+	  function ImagesLoaded( elem, options, onAlways ) {
+	    // coerce ImagesLoaded() without new, to be new ImagesLoaded()
+	    if ( !( this instanceof ImagesLoaded ) ) {
+	      return new ImagesLoaded( elem, options, onAlways );
+	    }
+	    // use elem as selector string
+	    if ( typeof elem == 'string' ) {
+	      elem = document.querySelectorAll( elem );
+	    }
+
+	    this.elements = makeArray( elem );
+	    this.options = extend( {}, this.options );
+
+	    if ( typeof options == 'function' ) {
+	      onAlways = options;
+	    } else {
+	      extend( this.options, options );
+	    }
+
+	    if ( onAlways ) {
+	      this.on( 'always', onAlways );
+	    }
+
+	    this.getImages();
+
+	    if ( $ ) {
+	      // add jQuery Deferred object
+	      this.jqDeferred = new $.Deferred();
+	    }
+
+	    // HACK check async to allow time to bind listeners
+	    var _this = this;
+	    setTimeout( function() {
+	      _this.check();
+	    });
+	  }
+
+	  ImagesLoaded.prototype = new EventEmitter();
+
+	  ImagesLoaded.prototype.options = {};
+
+	  ImagesLoaded.prototype.getImages = function() {
+	    this.images = [];
+
+	    // filter & find items if we have an item selector
+	    for ( var i=0; i < this.elements.length; i++ ) {
+	      var elem = this.elements[i];
+	      this.addElementImages( elem );
+	    }
+	  };
+
+	  /**
+	   * @param {Node} element
+	   */
+	  ImagesLoaded.prototype.addElementImages = function( elem ) {
+	    // filter siblings
+	    if ( elem.nodeName == 'IMG' ) {
+	      this.addImage( elem );
+	    }
+	    // get background image on element
+	    if ( this.options.background === true ) {
+	      this.addElementBackgroundImages( elem );
+	    }
+
+	    // find children
+	    // no non-element nodes, #143
+	    var nodeType = elem.nodeType;
+	    if ( !nodeType || !elementNodeTypes[ nodeType ] ) {
+	      return;
+	    }
+	    var childImgs = elem.querySelectorAll('img');
+	    // concat childElems to filterFound array
+	    for ( var i=0; i < childImgs.length; i++ ) {
+	      var img = childImgs[i];
+	      this.addImage( img );
+	    }
+
+	    // get child background images
+	    if ( typeof this.options.background == 'string' ) {
+	      var children = elem.querySelectorAll( this.options.background );
+	      for ( i=0; i < children.length; i++ ) {
+	        var child = children[i];
+	        this.addElementBackgroundImages( child );
+	      }
+	    }
+	  };
+
+	  var elementNodeTypes = {
+	    1: true,
+	    9: true,
+	    11: true
+	  };
+
+	  ImagesLoaded.prototype.addElementBackgroundImages = function( elem ) {
+	    var style = getStyle( elem );
+	    // get url inside url("...")
+	    var reURL = /url\(['"]*([^'"\)]+)['"]*\)/gi;
+	    var matches = reURL.exec( style.backgroundImage );
+	    while ( matches !== null ) {
+	      var url = matches && matches[1];
+	      if ( url ) {
+	        this.addBackground( url, elem );
+	      }
+	      matches = reURL.exec( style.backgroundImage );
+	    }
+	  };
+
+	  // IE8
+	  var getStyle = window.getComputedStyle || function( elem ) {
+	    return elem.currentStyle;
+	  };
+
+	  /**
+	   * @param {Image} img
+	   */
+	  ImagesLoaded.prototype.addImage = function( img ) {
+	    var loadingImage = new LoadingImage( img );
+	    this.images.push( loadingImage );
+	  };
+
+	  ImagesLoaded.prototype.addBackground = function( url, elem ) {
+	    var background = new Background( url, elem );
+	    this.images.push( background );
+	  };
+
+	  ImagesLoaded.prototype.check = function() {
+	    var _this = this;
+	    this.progressedCount = 0;
+	    this.hasAnyBroken = false;
+	    // complete if no images
+	    if ( !this.images.length ) {
+	      this.complete();
+	      return;
+	    }
+
+	    function onProgress( image, elem, message ) {
+	      // HACK - Chrome triggers event before object properties have changed. #83
+	      setTimeout( function() {
+	        _this.progress( image, elem, message );
+	      });
+	    }
+
+	    for ( var i=0; i < this.images.length; i++ ) {
+	      var loadingImage = this.images[i];
+	      loadingImage.once( 'progress', onProgress );
+	      loadingImage.check();
+	    }
+	  };
+
+	  ImagesLoaded.prototype.progress = function( image, elem, message ) {
+	    this.progressedCount++;
+	    this.hasAnyBroken = this.hasAnyBroken || !image.isLoaded;
+	    // progress event
+	    this.emit( 'progress', this, image, elem );
+	    if ( this.jqDeferred && this.jqDeferred.notify ) {
+	      this.jqDeferred.notify( this, image );
+	    }
+	    // check if completed
+	    if ( this.progressedCount == this.images.length ) {
+	      this.complete();
+	    }
+
+	    if ( this.options.debug && console ) {
+	      console.log( 'progress: ' + message, image, elem );
+	    }
+	  };
+
+	  ImagesLoaded.prototype.complete = function() {
+	    var eventName = this.hasAnyBroken ? 'fail' : 'done';
+	    this.isComplete = true;
+	    this.emit( eventName, this );
+	    this.emit( 'always', this );
+	    if ( this.jqDeferred ) {
+	      var jqMethod = this.hasAnyBroken ? 'reject' : 'resolve';
+	      this.jqDeferred[ jqMethod ]( this );
+	    }
+	  };
+
+	  // --------------------------  -------------------------- //
+
+	  function LoadingImage( img ) {
+	    this.img = img;
+	  }
+
+	  LoadingImage.prototype = new EventEmitter();
+
+	  LoadingImage.prototype.check = function() {
+	    // If complete is true and browser supports natural sizes,
+	    // try to check for image status manually.
+	    var isComplete = this.getIsImageComplete();
+	    if ( isComplete ) {
+	      // report based on naturalWidth
+	      this.confirm( this.img.naturalWidth !== 0, 'naturalWidth' );
+	      return;
+	    }
+
+	    // If none of the checks above matched, simulate loading on detached element.
+	    this.proxyImage = new Image();
+	    eventie.bind( this.proxyImage, 'load', this );
+	    eventie.bind( this.proxyImage, 'error', this );
+	    // bind to image as well for Firefox. #191
+	    eventie.bind( this.img, 'load', this );
+	    eventie.bind( this.img, 'error', this );
+	    this.proxyImage.src = this.img.src;
+	  };
+
+	  LoadingImage.prototype.getIsImageComplete = function() {
+	    return this.img.complete && this.img.naturalWidth !== undefined;
+	  };
+
+	  LoadingImage.prototype.confirm = function( isLoaded, message ) {
+	    this.isLoaded = isLoaded;
+	    this.emit( 'progress', this, this.img, message );
+	  };
+
+	  // ----- events ----- //
+
+	  // trigger specified handler for event type
+	  LoadingImage.prototype.handleEvent = function( event ) {
+	    var method = 'on' + event.type;
+	    if ( this[ method ] ) {
+	      this[ method ]( event );
+	    }
+	  };
+
+	  LoadingImage.prototype.onload = function() {
+	    this.confirm( true, 'onload' );
+	    this.unbindEvents();
+	  };
+
+	  LoadingImage.prototype.onerror = function() {
+	    this.confirm( false, 'onerror' );
+	    this.unbindEvents();
+	  };
+
+	  LoadingImage.prototype.unbindEvents = function() {
+	    eventie.unbind( this.proxyImage, 'load', this );
+	    eventie.unbind( this.proxyImage, 'error', this );
+	    eventie.unbind( this.img, 'load', this );
+	    eventie.unbind( this.img, 'error', this );
+	  };
+
+	  // -------------------------- Background -------------------------- //
+
+	  function Background( url, element ) {
+	    this.url = url;
+	    this.element = element;
+	    this.img = new Image();
+	  }
+
+	  // inherit LoadingImage prototype
+	  Background.prototype = new LoadingImage();
+
+	  Background.prototype.check = function() {
+	    eventie.bind( this.img, 'load', this );
+	    eventie.bind( this.img, 'error', this );
+	    this.img.src = this.url;
+	    // check if image is already complete
+	    var isComplete = this.getIsImageComplete();
+	    if ( isComplete ) {
+	      this.confirm( this.img.naturalWidth !== 0, 'naturalWidth' );
+	      this.unbindEvents();
+	    }
+	  };
+
+	  Background.prototype.unbindEvents = function() {
+	    eventie.unbind( this.img, 'load', this );
+	    eventie.unbind( this.img, 'error', this );
+	  };
+
+	  Background.prototype.confirm = function( isLoaded, message ) {
+	    this.isLoaded = isLoaded;
+	    this.emit( 'progress', this, this.element, message );
+	  };
+
+	  // -------------------------- jQuery -------------------------- //
+
+	  ImagesLoaded.makeJQueryPlugin = function( jQuery ) {
+	    jQuery = jQuery || window.jQuery;
+	    if ( !jQuery ) {
+	      return;
+	    }
+	    // set local variable
+	    $ = jQuery;
+	    // $().imagesLoaded()
+	    $.fn.imagesLoaded = function( options, callback ) {
+	      var instance = new ImagesLoaded( this, options, callback );
+	      return instance.jqDeferred.promise( $(this) );
+	    };
+	  };
+	  // try making plugin
+	  ImagesLoaded.makeJQueryPlugin();
+
+	  // --------------------------  -------------------------- //
+
+	  return ImagesLoaded;
+
+	});
+
+	}.call(window));
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+
+	var PropTypes = React.PropTypes;
+
+	var POSITIONS = {
+	  above: 'above',
+	  inside: 'inside',
+	  below: 'below'
+	};
+
+	/**
+	 * Calls a function when you scroll to the element.
+	 */
+	var Waypoint = React.createClass({
+	  displayName: 'Waypoint',
+
+	  propTypes: {
+	    // threshold is percentage of the height of the visible part of the
+	    // scrollable ancestor (e.g. 0.1)
+	    threshold: PropTypes.number,
+	    onEnter: PropTypes.func,
+	    onLeave: PropTypes.func
+	  },
+
+	  statics: {
+	    above: POSITIONS.above,
+	    below: POSITIONS.below
+	  },
+
+	  /**
+	   * @return {Object}
+	   */
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      threshold: 0,
+	      onEnter: function onEnter() {},
+	      onLeave: function onLeave() {}
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    this.scrollableAncestor = this._findScrollableAncestor();
+	    this.scrollableAncestor.addEventListener('scroll', this._handleScroll);
+	    window.addEventListener('resize', this._handleScroll);
+	    this._handleScroll(null);
+	  },
+
+	  componentDidUpdate: function componentDidUpdate() {
+	    // The element may have moved.
+	    this._handleScroll(null);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    if (this.scrollableAncestor) {
+	      // At the time of unmounting, the scrollable ancestor might no longer
+	      // exist. Guarding against this prevents the following error:
+	      //
+	      //   Cannot read property 'removeEventListener' of undefined
+	      this.scrollableAncestor.removeEventListener('scroll', this._handleScroll);
+	    }
+	    window.removeEventListener('resize', this._handleScroll);
+	  },
+
+	  /**
+	   * Traverses up the DOM to find an ancestor container which has an overflow
+	   * style that allows for scrolling.
+	   *
+	   * @return {Object} the closest ancestor element with an overflow style that
+	   *   allows for scrolling. If none is found, the `window` object is returned
+	   *   as a fallback.
+	   */
+	  _findScrollableAncestor: function _findScrollableAncestor() {
+	    var node = ReactDOM.findDOMNode(this);
+
+	    while (node.parentNode) {
+	      node = node.parentNode;
+
+	      if (node === document) {
+	        // This particular node does not have a computed style.
+	        continue;
+	      }
+
+	      if (node === document.documentElement) {
+	        // This particular node does not have a scroll bar, it uses the window.
+	        continue;
+	      }
+
+	      var style = window.getComputedStyle(node);
+	      var overflowY = style.getPropertyValue('overflow-y') || style.getPropertyValue('overflow');
+
+	      if (overflowY === 'auto' || overflowY === 'scroll') {
+	        return node;
+	      }
+	    }
+
+	    // A scrollable ancestor element was not found, which means that we need to
+	    // do stuff on window.
+	    return window;
+	  },
+
+	  /**
+	   * @param {Object} event the native scroll event coming from the scrollable
+	   *   ancestor, or resize event coming from the window. Will be undefined if
+	   *   called by a React lifecyle method
+	   */
+	  _handleScroll: function _handleScroll(event) {
+	    if (!this.isMounted()) {
+	      return;
+	    }
+
+	    var currentPosition = this._currentPosition();
+	    var previousPosition = this._previousPosition || null;
+
+	    // Save previous position as early as possible to prevent cycles
+	    this._previousPosition = currentPosition;
+
+	    if (previousPosition === currentPosition) {
+	      // No change since last trigger
+	      return;
+	    }
+
+	    if (currentPosition === POSITIONS.inside) {
+	      this.props.onEnter.call(this, event, previousPosition);
+	    } else if (previousPosition === POSITIONS.inside) {
+	      this.props.onLeave.call(this, event, currentPosition);
+	    }
+
+	    var isRapidScrollDown = previousPosition === POSITIONS.below && currentPosition === POSITIONS.above;
+	    var isRapidScrollUp = previousPosition === POSITIONS.above && currentPosition === POSITIONS.below;
+	    if (isRapidScrollDown || isRapidScrollUp) {
+	      // If the scroll event isn't fired often enough to occur while the
+	      // waypoint was visible, we trigger both callbacks anyway.
+	      this.props.onEnter.call(this, event, previousPosition);
+	      this.props.onLeave.call(this, event, currentPosition);
+	    }
+	  },
+
+	  /**
+	   * @param {Object} node
+	   * @return {Number}
+	   */
+	  _distanceToTopOfScrollableAncestor: function _distanceToTopOfScrollableAncestor(node) {
+	    if (this.scrollableAncestor !== window && !node.offsetParent) {
+	      throw new Error('The scrollable ancestor of Waypoint needs to have positioning to ' + 'properly determine position of Waypoint (e.g. `position: relative;`)');
+	    }
+
+	    if (node.offsetParent === this.scrollableAncestor || !node.offsetParent) {
+	      return node.offsetTop;
+	    } else {
+	      return node.offsetTop + this._distanceToTopOfScrollableAncestor(node.offsetParent);
+	    }
+	  },
+
+	  /**
+	   * @return {boolean} true if scrolled down almost to the end of the scrollable
+	   *   ancestor element.
+	   */
+	  _currentPosition: function _currentPosition() {
+	    var waypointTop = this._distanceToTopOfScrollableAncestor(ReactDOM.findDOMNode(this));
+	    var contextHeight = undefined;
+	    var contextScrollTop = undefined;
+
+	    if (this.scrollableAncestor === window) {
+	      contextHeight = window.innerHeight;
+	      contextScrollTop = window.pageYOffset;
+	    } else {
+	      contextHeight = this.scrollableAncestor.offsetHeight;
+	      contextScrollTop = this.scrollableAncestor.scrollTop;
+	    }
+
+	    var thresholdPx = contextHeight * this.props.threshold;
+
+	    var isBelowTop = contextScrollTop <= waypointTop + thresholdPx;
+	    if (!isBelowTop) {
+	      return POSITIONS.above;
+	    }
+
+	    var contextBottom = contextScrollTop + contextHeight;
+	    var isAboveBottom = contextBottom >= waypointTop - thresholdPx;
+	    if (!isAboveBottom) {
+	      return POSITIONS.below;
+	    }
+
+	    return POSITIONS.inside;
+	  },
+
+	  /**
+	   * @return {Object}
+	   */
+	  render: function render() {
+	    // We need an element that we can locate in the DOM to determine where it is
+	    // rendered relative to the top of its context.
+	    return React.createElement('span', { style: { fontSize: 0 } });
+	  }
+	});
+
+	module.exports = Waypoint;
+
 
 /***/ }
 /******/ ]);
