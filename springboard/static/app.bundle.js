@@ -19692,7 +19692,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n * Override bootstrap because, reasons.\n */\n.container-fluid {\n  max-width: 1500px; }\n\na {\n  transition: all 0.2s ease-in-out; }\n  a:hover {\n    color: #3C6FED !important; }\n\n.navbar-brand {\n  font-weight: 500;\n  color: #333 !important; }\n\n/*\n * Springboard global styles\n */\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: calc(100% +  6px);\n  background: #e9e9e9;\n  border-bottom: 6px solid #3C6FED; }\n\n#spr-navbar {\n  background-color: #ffffff;\n  opacity: 0.85;\n  border-color: #e7e7e7;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);\n  padding-right: 25px; }\n  #spr-navbar #spr-filter-section {\n    height: 0; }\n\n#spr-board {\n  margin-top: 85px;\n  margin-bottom: 150px; }\n\n.spr-tile {\n  display: inline-block;\n  width: calc(100% / 6 - 10px);\n  min-width: 200px;\n  margin-bottom: 16px;\n  border-radius: 6px;\n  overflow: hidden;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);\n  background: #ffffff;\n  color: #777;\n  font-size: 12px; }\n  .spr-tile .spr-tile-image {\n    border-bottom: 1px solid #e0e0e0;\n    max-width: 100%; }\n  .spr-tile .spr-gender-taxonomy {\n    z-index: -1;\n    color: #fff;\n    padding: 0 15px 5px;\n    position: absolute;\n    bottom: 0; }\n  .spr-tile .spr-heartit-btn {\n    z-index: -1;\n    position: absolute;\n    top: 10px;\n    left: 10px;\n    color: #fff;\n    padding: 2px 5px;\n    border-radius: 4px;\n    border: 1px solid #ac2925;\n    background: #c9302c; }\n    .spr-tile .spr-heartit-btn:hover {\n      border: 1px solid #d43f3a;\n      background: #d9534f;\n      cursor: pointer; }\n  .spr-tile .spr-tile-metabox > div {\n    padding: 5px 15px; }\n  .spr-tile .spr-tile-metabox > div:not(:first-child) {\n    border-top: 1px solid #e0e0e0; }\n\n.spr-board-end {\n  width: 100%;\n  margin-top: 40px;\n  background: none;\n  box-shadow: none;\n  text-align: center; }\n\n.spr-onhover-dim {\n  position: relative; }\n  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n    .spr-onhover-dim {\n      height: 100%; } }\n  .spr-onhover-dim:before {\n    position: absolute;\n    content: '';\n    height: 100%;\n    width: 100%;\n    background: #000000;\n    opacity: 0;\n    border-radius: 6px 6px 0 0;\n    z-index: 1; }\n  .spr-onhover-dim:hover:before {\n    opacity: 0.25;\n    transition: all 0.2s; }\n  .spr-onhover-dim .spr-exempt-dim {\n    position: relative;\n    z-index: 2; }\n  .spr-onhover-dim:hover .spr-show-at-dim {\n    z-index: 2; }\n", ""]);
+	exports.push([module.id, "/*\n * Override bootstrap because, reasons.\n */\n.container-fluid {\n  max-width: 1500px; }\n\na {\n  transition: all 0.2s ease-in-out; }\n  a:hover {\n    color: #3C6FED !important; }\n\n.navbar-brand {\n  font-weight: 500;\n  color: #333 !important; }\n\n/*\n * Springboard global styles\n */\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: calc(100% +  6px);\n  background: #e9e9e9;\n  border-bottom: 6px solid #3C6FED; }\n\n#spr-navbar {\n  background-color: #ffffff;\n  opacity: 0.85;\n  border-color: #e7e7e7;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22); }\n  #spr-navbar #spr-filter-section {\n    transition: all 0.2s;\n    display: none; }\n\n#spr-board {\n  margin-top: 85px;\n  margin-bottom: 150px; }\n\n.spr-tile {\n  display: inline-block;\n  width: calc(100% / 6 - 10px);\n  min-width: 200px;\n  margin-bottom: 16px;\n  border-radius: 6px;\n  overflow: hidden;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);\n  background: #ffffff;\n  color: #777;\n  font-size: 12px; }\n  .spr-tile .spr-tile-image {\n    border-bottom: 1px solid #e0e0e0;\n    max-width: 100%; }\n  .spr-tile .spr-gender-taxonomy {\n    z-index: -1;\n    color: #fff;\n    padding: 0 15px 5px;\n    position: absolute;\n    bottom: 0; }\n  .spr-tile .spr-heartit-btn {\n    z-index: -1;\n    position: absolute;\n    top: 10px;\n    left: 10px;\n    color: #fff;\n    padding: 2px 5px;\n    border-radius: 4px;\n    border: 1px solid #ac2925;\n    background: #c9302c; }\n    .spr-tile .spr-heartit-btn:hover {\n      border: 1px solid #d43f3a;\n      background: #d9534f;\n      cursor: pointer; }\n  .spr-tile .spr-tile-metabox > div {\n    padding: 5px 15px; }\n  .spr-tile .spr-tile-metabox > div:not(:first-child) {\n    border-top: 1px solid #e0e0e0; }\n\n.spr-board-end {\n  width: 100%;\n  margin-top: 40px;\n  background: none;\n  box-shadow: none;\n  text-align: center; }\n\n.spr-onhover-dim {\n  position: relative; }\n  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n    .spr-onhover-dim {\n      height: 100%; } }\n  .spr-onhover-dim:before {\n    position: absolute;\n    content: '';\n    height: 100%;\n    width: 100%;\n    background: #000000;\n    opacity: 0;\n    border-radius: 6px 6px 0 0;\n    z-index: 1; }\n  .spr-onhover-dim:hover:before {\n    opacity: 0.25;\n    transition: all 0.2s; }\n  .spr-onhover-dim .spr-exempt-dim {\n    position: relative;\n    z-index: 2; }\n  .spr-onhover-dim:hover .spr-show-at-dim {\n    z-index: 2; }\n", ""]);
 
 	// exports
 
@@ -20055,6 +20055,14 @@
 	module.exports = _react2.default.createClass({
 	  displayName: "exports",
 
+	  _handleClickOnFilters: function _handleClickOnFilters() {
+	    alert("Sorry, not implemented yet. SOON :|");
+	  },
+
+	  _handleClickOnMyBoard: function _handleClickOnMyBoard() {
+	    alert("Sorry, not implemented yet. SOON :|");
+	  },
+
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "nav",
@@ -20082,7 +20090,8 @@
 	              null,
 	              _react2.default.createElement(
 	                "a",
-	                { href: "" },
+	                { href: "javascript:void(null)",
+	                  onClick: this._handleClickOnFilters },
 	                "+ Filters"
 	              )
 	            ),
@@ -20091,7 +20100,9 @@
 	              null,
 	              _react2.default.createElement(
 	                "a",
-	                { href: "../navbar/" },
+	                { href: "javascript:void(null)",
+	                  style: { paddingRight: '25px' },
+	                  onClick: this._handleClickOnMyBoard },
 	                "My Board"
 	              )
 	            )
@@ -20224,7 +20235,7 @@
 	      _react2.default.createElement(
 	        "div",
 	        { className: "spr-tile spr-board-end" },
-	        !this.state.isLoading && _react2.default.createElement(_reactWaypoint2.default, { onEnter: this._handleWaypointEnter, threshold: 0.1 }),
+	        !this.state.isLoading && _react2.default.createElement(_reactWaypoint2.default, { onEnter: this._handleWaypointEnter, threshold: 0.2 }),
 	        this.state.isLoading && _react2.default.createElement("i", { className: "fa fa-spinner fa-2x fa-spin" })
 	      )
 	    );

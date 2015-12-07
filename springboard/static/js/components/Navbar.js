@@ -2,6 +2,14 @@
 import React from "react";
 
 module.exports = React.createClass({
+  _handleClickOnFilters: function() {
+    alert("Sorry, not implemented yet. SOON :|");
+  },
+
+  _handleClickOnMyBoard: function() {
+    alert("Sorry, not implemented yet. SOON :|");
+  },
+
   render: function() {
     return (
       <nav id="spr-navbar" className="navbar navbar-default navbar-fixed-top">
@@ -11,8 +19,19 @@ module.exports = React.createClass({
           </div>
           <div>
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="">+ Filters</a></li>
-              <li><a href="../navbar/">My Board</a></li>
+              <li>
+                <a href="javascript:void(null)"
+                   onClick={this._handleClickOnFilters}>
+                  + Filters
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(null)"
+                   style={{paddingRight: '25px'}}
+                   onClick={this._handleClickOnMyBoard}>
+                  My Board
+                </a>
+              </li>
             </ul>
           </div>
         </div>

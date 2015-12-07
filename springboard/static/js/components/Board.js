@@ -83,7 +83,7 @@ module.exports = React.createClass({
 
         <div className="spr-tile spr-board-end">
           {!this.state.isLoading &&
-            <Waypoint onEnter={this._handleWaypointEnter} threshold={0.1} />}
+            <Waypoint onEnter={this._handleWaypointEnter} threshold={0.2} />}
           {this.state.isLoading &&
             <i className="fa fa-spinner fa-2x fa-spin"></i>}
         </div>

@@ -42,10 +42,10 @@ body {
     opacity: 0.85;
     border-color: #e7e7e7;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
-    padding-right: 25px;
 
     #spr-filter-section {
-        height: 0;
+        transition: all 0.2s;
+        display: none;
     }
 }
 
